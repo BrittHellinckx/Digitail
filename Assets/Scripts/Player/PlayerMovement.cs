@@ -37,23 +37,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            animator.SetBool("Walk", true);
-            animator.SetBool("Stand", false);
-        }
-        /*
-        //Check if player is moving
-        if (lastPosition == gameObject.transform.position)
-        {
-            animator.SetBool("Walk", false);
-            animator.SetBool("Stand", true);
+            animator.SetBool("walk", true);
+            animator.SetBool("idle", false);
+            /*
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                animator.SetFloat("direction", 1);
+            }
+            else if (Input.GetAxis("Horizontal") < 0)
+            {
+                animator.SetFloat("direction", -1);
+            }
+            */
         }
         else
         {
-            animator.SetBool("Walk", true);
-            animator.SetBool("Stand", false);
+            animator.SetBool("walk", false);
+            animator.SetBool("idle", true);
         }
-        lastPosition = gameObject.transform.position;
-        */
 
         //Player actions
         if (cc.isGrounded)
@@ -62,30 +63,28 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 velocity.y = Mathf.Sqrt(jumpBoost * -2f * gravity);
-                animator.SetBool("Jump", true);
+                animator.SetBool("jump", true);
             }
             else
             {
-                animator.SetBool("Jump", false);
+                animator.SetBool("jump", false);
             }
             //Sprint
             if (Input.GetButton("Fire3"))
             {
                 speed = sprintSpeed;
-                animator.SetBool("Run", true);
+                animator.SetBool("run", true);
             }
             else
             {
                 speed = regularSpeed;
-                animator.SetBool("Run", false);
+                animator.SetBool("run", false);
             }
-            /*
             //Crouch
-            if(Input.GetButton("Fire1"))
-                animator.SetBool("Crouch", true);
+            if (Input.GetButton("Fire1"))
+                animator.SetBool("crouch", true);
             else
-                animator.SetBool("Crouch", false);      
-                */
+                animator.SetBool("crouch", false);
         }
 
         //Move Player

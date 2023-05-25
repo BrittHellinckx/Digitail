@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour
 {
-    public int regularSpeed = 2;
-    public int sprintSpeed = 3;
-    public int jumpBoost = 1;
+    public float regularSpeed;
+    public float sprintSpeed;
+    public float jumpBoost;
+    public string character;
 
-    string character;
-
-    void Start() 
+    void Update()
     {
-        character = gameObject.name;
-
-        if(character == "Gun")
+        switch (character)
         {
-            Debug.Log("Gun");
-            // CHECK & USE GUN ABILITES
-        }
-        else if(character == "Melee")
-        {
-            Debug.Log("Melee");
-            // CHECK & USE MELEE ABILITIES
-        }
-        else if( character == "?")
-        {
-            Debug.Log("?");
-            // CHECK & USE ? ABILITIES
-        }
-        else if( character == "Hack")
-        {
-            Debug.Log("Hack");
-            // CHECK & USE HACK ABILITIES
+            case "Gun":
+                regularSpeed = GetComponentInChildren<Guitar>().regularSpeed;
+                sprintSpeed = GetComponentInChildren<Guitar>().sprintSpeed;
+                jumpBoost = GetComponentInChildren<Guitar>().jumpBoost;
+                GetComponentInChildren<Guitar>().UseGuitarAbilities();
+                break;
+            case "Melee":
+                regularSpeed = GetComponentInChildren<Mic>().regularSpeed;
+                sprintSpeed = GetComponentInChildren<Mic>().sprintSpeed;
+                jumpBoost = GetComponentInChildren<Mic>().jumpBoost;
+                GetComponentInChildren<Mic>().UseMicAbilities();
+                break;
+            case "Light":
+                regularSpeed = GetComponentInChildren<Drum>().regularSpeed;
+                sprintSpeed = GetComponentInChildren<Drum>().sprintSpeed;
+                jumpBoost = GetComponentInChildren<Drum>().jumpBoost;
+                GetComponentInChildren<Drum>().UseDrumAbilities();
+                break;
+            case "Hack":
+                regularSpeed = GetComponentInChildren<Piano>().regularSpeed;
+                sprintSpeed = GetComponentInChildren<Piano>().sprintSpeed;
+                jumpBoost = GetComponentInChildren<Piano>().jumpBoost;
+                GetComponentInChildren<Piano>().UsePianoAbilities();
+                break;
         }
     }
 }

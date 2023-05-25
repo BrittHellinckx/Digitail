@@ -101,5 +101,15 @@ public class ChangePlayer : MonoBehaviour
         }
         GetComponent<FollowPlayer>().player = character;
         GetComponent<FollowPlayer>().followers = possibleCharacters;
+
+        //Set character name to activate abilities
+        GetComponent<Abilities>().character = character.name;
+
+        //Set character to enemy to follow
+        for( int i = 0; i<5; i++)
+        {
+            //GameObject.Find("Enemies").transform.GetChild(i).GetComponent<EnemyMovement>().player = character;
+            //GameObject.Find("Enemies").transform.GetChild(i).GetComponent<EnemyHealth>().player = character;         
+        }
     }
 }

@@ -17,8 +17,8 @@ public class FollowPlayer : MonoBehaviour
         {
             if (player.transform.position.x - 3 > followers[i].position.x || followers[i].position.x > player.transform.position.x + 3)
             {
-                followers[i].GetComponent<Animator>().SetBool("Walk", true);
-                followers[i].GetComponent<Animator>().SetBool("Stand", false);
+                followers[i].GetComponent<Animator>().SetBool("walk", true);
+                followers[i].GetComponent<Animator>().SetBool("idle", false);
 
                 followers[i].GetComponent<NavMeshAgent>().isStopped = false;
                 followers[i].GetComponent<NavMeshAgent>().destination = player.position;
@@ -26,8 +26,8 @@ public class FollowPlayer : MonoBehaviour
             }
             else if (player.transform.position.z - 3 > followers[i].position.z || followers[i].position.z > player.transform.position.z + 3)
             {
-                followers[i].GetComponent<Animator>().SetBool("Walk", true);
-                followers[i].GetComponent<Animator>().SetBool("Stand", false);
+                followers[i].GetComponent<Animator>().SetBool("walk", true);
+                followers[i].GetComponent<Animator>().SetBool("idle", false);
 
                 //ERROR - Followers don't move
                 followers[i].GetComponent<NavMeshAgent>().isStopped = false;
@@ -36,8 +36,8 @@ public class FollowPlayer : MonoBehaviour
             }
             else
             {
-                followers[i].GetComponent<Animator>().SetBool("Walk", false);
-                followers[i].GetComponent<Animator>().SetBool("Stand", true);
+                followers[i].GetComponent<Animator>().SetBool("walk", false);
+                followers[i].GetComponent<Animator>().SetBool("idle", true);
 
                 //
                 followers[i].GetComponent<NavMeshAgent>().isStopped = true;
