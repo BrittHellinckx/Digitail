@@ -13,25 +13,25 @@ public class Abilities : MonoBehaviour
     {
         switch (character)
         {
-            case "Gun":
+            case "Guitar":
                 regularSpeed = GetComponentInChildren<Guitar>().regularSpeed;
                 sprintSpeed = GetComponentInChildren<Guitar>().sprintSpeed;
                 jumpBoost = GetComponentInChildren<Guitar>().jumpBoost;
                 GetComponentInChildren<Guitar>().UseGuitarAbilities();
                 break;
-            case "Melee":
+            case "Mic":
                 regularSpeed = GetComponentInChildren<Mic>().regularSpeed;
                 sprintSpeed = GetComponentInChildren<Mic>().sprintSpeed;
                 jumpBoost = GetComponentInChildren<Mic>().jumpBoost;
                 GetComponentInChildren<Mic>().UseMicAbilities();
                 break;
-            case "Light":
+            case "Drum":
                 regularSpeed = GetComponentInChildren<Drum>().regularSpeed;
                 sprintSpeed = GetComponentInChildren<Drum>().sprintSpeed;
                 jumpBoost = GetComponentInChildren<Drum>().jumpBoost;
                 GetComponentInChildren<Drum>().UseDrumAbilities();
                 break;
-            case "Hack":
+            case "Piano":
                 regularSpeed = GetComponentInChildren<Piano>().regularSpeed;
                 sprintSpeed = GetComponentInChildren<Piano>().sprintSpeed;
                 jumpBoost = GetComponentInChildren<Piano>().jumpBoost;

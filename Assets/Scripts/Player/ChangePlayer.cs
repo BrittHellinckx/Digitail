@@ -85,7 +85,7 @@ public class ChangePlayer : MonoBehaviour
     {
         //Player
         character = possibleCharacters[whichCharacter];
-        character.GetComponent<PlayerMovement>().enabled = true;
+        character.GetComponent<MovePlayer>().enabled = true;
         character.GetComponent<CharacterController>().enabled = true;
         //character.GetComponent<Abilities>().enabled = true;
 
@@ -94,7 +94,7 @@ public class ChangePlayer : MonoBehaviour
         {
             if (possibleCharacters[i] != character)
             {
-                possibleCharacters[i].GetComponent<PlayerMovement>().enabled = false;
+                possibleCharacters[i].GetComponent<MovePlayer>().enabled = false;
                 possibleCharacters[i].GetComponent<CharacterController>().enabled = false;
                 //possibleCharacters[i].GetComponent<Abilities>().enabled = false;
             }

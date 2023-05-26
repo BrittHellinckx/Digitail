@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UI;
+//using TMPro;
 
 public class Guitar : MonoBehaviour
 {
@@ -30,13 +31,21 @@ public class Guitar : MonoBehaviour
     public Animator animator;
 
     [Header("UI")]
-    public TextMesh ammunitionDisplay;
+    public Sprite gunImage;
+    public Canvas weaponCanvas;
+    //Image weaponDisplay;
+    //TextMeshPro ammunitionDisplay;
 
     ////////////////////////////////////////////
+    void Start()
+    {
+        //weaponDisplay = weaponCanvas.transform.Find("WeaponImage").GetComponent<Image>();
+        //ammunitionDisplay = ;
+    }
     public void UseGuitarAbilities()
     {
         //Show amunition
-        //ShowDisplay();
+        ShowDisplay();
 
         //Check if shooting
         ShootGun();
@@ -45,18 +54,20 @@ public class Guitar : MonoBehaviour
     {
         if (bulletsLeft <= 0 || reloading)
         {
-            ammunitionDisplay.text = "Reloading ...";
+            //ammunitionDisplay.text = "Reloading ...";
         }
         else
         {
-            ammunitionDisplay.text = bulletsLeft + " / " + magSize;
+            //ammunitionDisplay.text = bulletsLeft + " / " + magSize;
         }
     }
 
     void ShootGun()
     {
+        //Not shooting
+        if (!Input.GetKeyDown(KeyCode.E)) { animator.SetBool("aim", false); }
         //Shooting
-        if (Input.GetKeyDown(KeyCode.E) && readyToShoot && !reloading && bulletsLeft != 0) StartCoroutine(Shooting());
+        else if (Input.GetKeyDown(KeyCode.E) && readyToShoot && !reloading && bulletsLeft != 0) StartCoroutine(Shooting());
         //Reloading
         else if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magSize && !reloading) StartCoroutine(Reloading());
         //Reload automatically when no bullets left
@@ -69,8 +80,8 @@ public class Guitar : MonoBehaviour
         readyToShoot = false;
         animator.SetBool("aim", true);
 
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * bulletForce);
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.localRotation);
+        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.forward * bulletForce);
 
         bulletsLeft--;
 
